@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Aurea Finance Group</title>
+
+        <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div>
+                    <img src="../assets/images/logo.png" class="sidebar-logo" />
+
+                    <nav>
+                        <a class="active" href="carga.html">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <span> Carga </span>
+                        </a>
+
+                        <a href="carga-nueva.html">
+                            <i class="fa-solid fa-square-plus"></i>
+
+                            <span> Carga Nueva </span>
+                        </a>
+
+                        <a href="configurar.html">
+                            <i class="fa-solid fa-server"></i>
+
+                            <span> Configurar Servidor </span>
+                        </a>
+                    </nav>
+                </div>
+
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span> Cerrar sesión </span>
+                </button>
+            </aside>
+
+            <main class="content">
+                <h1>Carga</h1>
+
+                <p>Seleccione las opciones y carga tu archivo</p>
+
+                <div class="filters">
+                    <div>
+                        <label> SERVIDOR </label>
+
+                        <select>
+                            <option>Desglose de servidores</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label> BASE DE DATOS </label>
+
+                        <select>
+                            <option>Desglose de base de datos</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label> ESQUEMA </label>
+
+                        <select>
+                            <option>Desglose de esquema</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label> TABLA </label>
+
+                        <select>
+                            <option>Desglose de tabla</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="upload-box">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <h2>Carga tu archivo</h2>
+
+                    <p>Arrastra y suelta tu archivo aquí o selecciona desde tu dispositivo</p>
+
+                    <button class="btn-primary" onclick="selectFile()">Seleccionar Archivo</button>
+
+                    <input type="file" id="fileInput" hidden onchange="handleFile(event)" />
+
+                    <span> Formatos permitidos: CSV, XLSX, TXT </span>
+                </div>
+
+                <div class="actions-footer">
+                    <button class="btn-outline-dark" onclick="window.location.href='carga-nueva.html'">Cancelar</button>
+
+                    <div class="right-buttons">
+                        <button class="btn-outline">Validar Archivo</button>
+
+                        <button class="btn-primary">Cargar Archivo</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="../assets/js/app.js"></script>
+    </body>
+</html>

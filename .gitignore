@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.db
+*.sqlite3
+venv/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Node / frontend tools
+node_modules/
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Uploads temporales
+backend/uploads/

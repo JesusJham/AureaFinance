@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Aurea Finance Group</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style-auth.css" />
+    </head>
+    <body>
+        <div class="auth-container">
+            <!-- LEFT -->
+            <div class="auth-left">
+                <div class="overlay"></div>
+                <div class="brand-content">
+                    <h1>PLATAFORMA DE CARGA Y GESTIÓN DE DATOS</h1>
+                    <img src="../assets/images/logo.png" class="logo" />
+                    <p>ACCESO SEGURO A LA PLATAFORMA</p>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="auth-right">
+                <div class="auth-card">
+                    <h2>INICIAR SESIÓN</h2>
+                    <span> Ingresa tus credenciales para continuar </span>
+                    <form id="loginForm" onsubmit="login(event)">
+                        <div class="input-group">
+                            <label>Usuario</label>
+                            <input type="text" id="username" required />
+                        </div>
+                        <div class="input-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="password" required />
+                        </div>
+                        <div class="options">
+                            <div>
+                                <input type="checkbox" />
+                                Recordar sesión
+                            </div>
+                            <a href="#"> ¿Olvidaste tu contraseña? </a>
+                        </div>
+                        <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                        <div class="create-account">
+                            <a href="registrar.html"> Crear cuenta </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../assets/js/app.js"></script>
+    </body>
+</html>
