@@ -138,10 +138,41 @@ function testConnection() {
 
 
 
-function saveServer() {
-    alert("Servidor guardado correctamente");
+async function saveServer() {
+    const inputs = document.querySelectorAll(".server-form-card input");
 
-    window.location.href = "Configurar.html";
+    const data = {
+        nombre_servidor: inputs[0].value,
+        host: inputs[1].value,
+        name_bd: inputs[2].value,
+        user_bd: inputs[3].value,
+        pass_bd: document.getElementById("addPassword").value
+    };
+
+    if (!data.nombre_servidor || !data.host || !data.name_bd || !data.user_bd || !data.pass_bd) {
+        alert("Completa todos los campos");
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:8000/servidores", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        console.log("GUARDADO EN NEON:", result);
+
+        alert("Servidor guardado en Neon");
+
+        window.location.href = "Configurar.html";
+
+    } catch (error) {
+        console.error(error);
+        alert("Error al guardar servidor");
+    }
 }
 
 
@@ -163,3 +194,45 @@ function deleteServer() {
         window.location.href = "Configurar.html";
     }
 }
+
+async function loadServers() {
+    try {
+        const res = await fetch("http://localhost:8000/servidores");
+        const data = await res.json();
+
+        console.log("SERVIDORES:", data);
+
+        const tbody = document.getElementById("serversTable");
+
+        tbody.innerHTML = "";
+
+        if (!data || data.length === 0) {
+            document.querySelector(".empty-state").style.display = "block";
+            return;
+        }
+
+        document.querySelector(".empty-state").style.display = "none";
+
+        data.forEach(server => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${server.id}</td>
+                    <td>${server.host}</td>
+                    <td>${server.nombre_servidor}</td>
+                    <td>
+                        <span style="color:green;">Activo</span>
+                    </td>
+                    <td>
+                        <button onclick="alert('Servidor ${server.id}')">
+                            Ver
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+
+    } catch (error) {
+        console.error("Error cargando servidores:", error);
+    }
+}
+document.addEventListener("DOMContentLoaded", loadServers);

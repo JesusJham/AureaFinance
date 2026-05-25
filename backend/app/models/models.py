@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Text
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -25,17 +25,14 @@ class Servidor(Base):
     __tablename__ = "servidores"
 
     id         = Column(Integer, primary_key=True, index=True)
+    usuario_id = Column(Integer, ForeignKey("usuarios.id"), nullable=True)
     nombre     = Column(String(150), nullable=False)
     host       = Column(String(255), nullable=False)
     name_bd    = Column(String(150), nullable=False)
     user_bd    = Column(String(150), nullable=False)
-    pass_bd    = Column(String(255), nullable=False)   # encriptado
+    pass_bd    = Column(String(255), nullable=False)
     activo     = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-    usuario_id = Column(Integer, ForeignKey("usuarios.id"))
-    usuario    = relationship("Usuario", back_populates="servidores")
-    cargas     = relationship("Carga", back_populates="servidor")
+    created_at = Column(DateTime, default=func.now())
 
 
 class Carga(Base):
@@ -59,3 +56,5 @@ class Carga(Base):
 
     usuario_id  = Column(Integer, ForeignKey("usuarios.id"))
     usuario     = relationship("Usuario", back_populates="cargas")
+
+    
