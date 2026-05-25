@@ -1,45 +1,69 @@
-function login(event) {
+const API = "http://localhost:8000";
+
+async function login(event) {
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
-
+    const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-    if (username === "" || password === "") {
+    if (!username || !password) {
         alert("Completa todos los campos");
-
         return;
     }
 
-    localStorage.setItem("token", "aurea_session");
+    try {
+        const res = await fetch(`${API}/api/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
 
-    window.location.href = "Carga.html";
+        const data = await res.json();
+
+        if (res.ok) {
+            localStorage.setItem("token", data.access_token);
+            localStorage.setItem("usuario", JSON.stringify(data.usuario));
+            window.location.href = "Carga.html";
+        } else {
+            alert("❌ " + data.detail);
+        }
+    } catch (error) {
+        alert("❌ No se pudo conectar al servidor");
+    }
 }
 
-
-
-function register(event) {
+async function register(event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
+    const nombres   = document.getElementById("name").value.trim();
+    const apellidos = document.getElementById("lastname").value.trim();
+    const email     = document.getElementById("email").value.trim();
+    const username  = document.getElementById("username").value.trim();
+    const password  = document.getElementById("password").value;
 
-    const lastname = document.getElementById("lastname").value;
-
-    const email = document.getElementById("registerEmail").value;
-
-    const username = document.getElementById("username").value;
-
-    const password = document.getElementById("registerPassword").value;
-
-    if (name === "" || lastname === "" || email === "" || username === "" || password === "") {
+    if (!nombres || !apellidos || !email || !username || !password) {
         alert("Completa todos los campos");
-
         return;
     }
 
-    alert("Cuenta creada correctamente");
+    try {
+        const res = await fetch(`${API}/api/auth/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombres, apellidos, email, username, password })
+        });
 
-    window.location.href = "Login.html";
+        const data = await res.json();
+
+        if (res.ok) {
+            alert("✅ Cuenta creada correctamente");
+            window.location.href = "login.html";
+        } else {
+            alert("❌ " + data.detail);
+        }
+    } catch (error) {
+        alert("❌ No se pudo conectar al servidor");
+    }
 }
 
 
