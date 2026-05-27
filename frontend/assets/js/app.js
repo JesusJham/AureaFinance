@@ -1,4 +1,4 @@
-const API = "http://localhost:8000";
+const API = "http://localhost:8000/api";
 
 async function login(event) {
     event.preventDefault();
@@ -12,7 +12,7 @@ async function login(event) {
     }
 
     try {
-        const res = await fetch(`${API}/api/auth/login`, {
+        const res = await fetch(`${API}/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
@@ -47,7 +47,7 @@ async function register(event) {
     }
 
     try {
-        const res = await fetch(`${API}/api/auth/register`, {
+        const res = await fetch(`${API}/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombres, apellidos, email, username, password })
@@ -155,7 +155,7 @@ async function saveServer() {
     }
 
     try {
-        const res = await fetch("http://localhost:8000/servidores", {
+        const res = await fetch(`${API}/servidores`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -197,7 +197,7 @@ function deleteServer() {
 
 async function loadServers() {
     try {
-        const res = await fetch("http://localhost:8000/servidores");
+        const res = await fetch(`${API}/servidores`);
         const data = await res.json();
 
         console.log("SERVIDORES:", data);

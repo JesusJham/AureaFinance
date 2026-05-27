@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Text, func
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -33,6 +33,9 @@ class Servidor(Base):
     pass_bd    = Column(String(255), nullable=False)
     activo     = Column(Boolean, default=True)
     created_at = Column(DateTime, default=func.now())
+
+    usuario = relationship("Usuario", back_populates="servidores")
+    cargas  = relationship("Carga", back_populates="servidor")
 
 
 class Carga(Base):
