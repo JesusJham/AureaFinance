@@ -1,123 +1,110 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurea Finance Group</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
 
-        <title>Aurea Finance Group</title>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div>
+                <img src="../assets/images/logo.png" class="sidebar-logo" />
 
-        <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    </head>
-
-    <body>
-        <div class="container">
-            <aside class="sidebar">
-                <div>
-                    <img src="../assets/images/logo.png" class="sidebar-logo" />
-
-                    <nav>
-                        <a href="carga.html">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-
-                            <span> Carga </span>
-                        </a>
-
-                        <a href="carga-nueva.html">
-                            <i class="fa-solid fa-square-plus"></i>
-
-                            <span> Carga Nueva </span>
-                        </a>
-
-                        <a class="active" href="configurar.html">
-                            <i class="fa-solid fa-server"></i>
-
-                            <span> Configurar Servidor </span>
-                        </a>
-                    </nav>
-                </div>
-
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-
-                    <span> Cerrar sesión </span>
-                </button>
-            </aside>
-
-            <main class="content">
-                <!-- HEADER -->
-                <div class="header-flex">
-                    <div>
-                        <h1>Configuración de Servidor</h1>
-
-                        <p>Registra y administra tus conexiones a bases de datos SQL Server</p>
-                    </div>
-
-                    <a href="detalle-servidor.html" class="btn-primary">
-                        <i class="fa-solid fa-plus"></i>
-
-                        Agregar Servidor
+                <nav>
+                    <a href="carga.html">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Carga</span>
                     </a>
-                </div>
 
-                <div class="table-card">
-                    <!-- HEADER -->
-                    <div class="table-header">
-                        <div>
-                            <h2>Servidores Registrados</h2>
+                    <a href="carga-nueva.html">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span>Carga Nueva</span>
+                    </a>
 
-                            <p>Lista de conexiones configuradas en tu cuenta</p>
-                        </div>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-
-                                <th>HOST</th>
-
-                                <th>NOMBRE</th>
-
-                                <th>ESTADO</th>
-
-                                <th>ACCIONES</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="serversTable"></tbody>
-                    </table>
-
-                    <div class="empty-state">
+                    <a class="active" href="configurar.html">
                         <i class="fa-solid fa-server"></i>
+                        <span>Configurar Servidor</span>
+                    </a>
+                </nav>
+            </div>
 
-                        <h3>No hay servidores registrados</h3>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar sesión</span>
+            </button>
+        </aside>
 
-                        <p>Agrega un servidor SQL Server para comenzar</p>
-                    </div>
+        <main class="content">
+            <div class="header-flex">
+                <div>
+                    <h1>Configuración de Servidor</h1>
+                    <p>Registra y administra conexiones a bases de datos como Neon PostgreSQL, SQL Server u otras.</p>
+                </div>
 
-                    <div class="table-footer">
-                        <span> Mostrando 0 de 0 servidores </span>
+                <a href="detalle-servidor.html" class="btn-primary">
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar Servidor
+                </a>
+            </div>
 
-                        <div class="pagination">
-                            <button disabled>
-                                <i class="fa-solid fa-angle-left"></i>
-                            </button>
-
-                            <span class="page-active"> 1 </span>
-
-                            <button disabled>
-                                <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                        </div>
+            <div class="table-card">
+                <div class="table-header">
+                    <div>
+                        <h2>Servidores Registrados</h2>
+                        <p>Lista de conexiones configuradas para cargas y creación de tablas.</p>
                     </div>
                 </div>
-            </main>
-        </div>
-       
 
-        <script src="../assets/js/app.js"></script>
-    </body>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE SERVIDOR</th>
+                            <th>TIPO BD</th>
+                            <th>HOST</th>
+                            <th>PUERTO</th>
+                            <th>BASE DATOS</th>
+                            <th>USUARIO</th>
+                            <th>SSL</th>
+                            <th>ESTADO</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="serversTable">
+                    </tbody>
+                </table>
+
+                <div class="empty-state">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>No hay servidores registrados</h3>
+                    <p>Agrega una conexión a base de datos para comenzar.</p>
+                </div>
+
+                <div class="table-footer">
+                    <span id="serverCount">Mostrando 0 de 0 servidores</span>
+
+                    <div class="pagination">
+                        <button disabled>
+                            <i class="fa-solid fa-angle-left"></i>
+                        </button>
+
+                        <span class="page-active">1</span>
+
+                        <button disabled>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/app.js"></script>
+</body>
 </html>

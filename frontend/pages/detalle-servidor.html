@@ -1,207 +1,116 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurea Finance Group</title>
+    <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>Aurea Finance Group</title>
-
-        <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    </head>
-
-    <body>
-        <div class="container">
-            <aside class="sidebar">
-                <div>
-                    <img src="../assets/images/logo.png" class="sidebar-logo" />
-
-                    <nav>
-                        <a href="carga.html">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-
-                            <span> Carga </span>
-                        </a>
-
-                        <a href="carga-nueva.html">
-                            <i class="fa-solid fa-square-plus"></i>
-
-                            <span> Carga Nueva </span>
-                        </a>
-
-                        <a class="active" href="configurar.html">
-                            <i class="fa-solid fa-server"></i>
-
-                            <span> Configurar Servidor </span>
-                        </a>
-                    </nav>
-                </div>
-
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-
-                    <span> Cerrar sesión </span>
-                </button>
-            </aside>
-
-            <main class="content">
-                <h1>Detalles del Servidor</h1>
-
-                <div class="server-tabs">
-                    <a href="#agregar" class="tab-btn active" onclick="showSection('agregar', this)">
-                        Agregar Servidor
-                    </a>
-
-                    <a href="#actualizar" class="tab-btn" onclick="showSection('actualizar', this)">
-                        Actualizar Servidor
-                    </a>
-                </div>
-
-                <section id="agregar" class="server-section active">
-                    <div class="server-layout">
-                        <div class="server-form-card">
-                            <div class="form-group">
-                                <label> NOMBRE DEL SERVIDOR * </label>
-
-                                <input type="text" placeholder="Ej. Producción" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> HOST * </label>
-
-                                <input type="text" placeholder="Ej. localhost" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> NAME_BD * </label>
-
-                                <input type="text" placeholder="Ej. aurea_finanzas" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> USER_BD * </label>
-
-                                <input type="text" placeholder="Ej. aurea_user" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> PASS_BD * </label>
-
-                                <div class="password-box">
-                                    <input type="password" id="addPassword" placeholder="Ingrese contraseña" />
-
-                                    <i class="fa-regular fa-eye" onclick="togglePassword('addPassword', this)"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="server-status">
-                            <h3>Estado de Conexión</h3>
-
-                            <div class="status-circle">
-                                <i class="fa-solid fa-minus"></i>
-                            </div>
-
-                            <span> Sin Probar </span>
-
-                            <p>Aún no se ha probado la conexión</p>
-                        </div>
-                    </div>
-
-                    <div class="actions-footer">
-                        <button class="btn-outline" onclick="testConnection()">Probar Conexión</button>
-
-                        <div class="right-buttons">
-                            <button class="btn-outline-dark" onclick="window.location.href='configurar.html'">
-                                Cancelar
-                            </button>
-
-                            <button class="btn-primary" onclick="saveServer()">Guardar Servidor</button>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="actualizar" class="server-section">
-                    <div class="info-banner">
-                        <i class="fa-solid fa-circle-info"></i>
-
-                        <span> Editando servidor seleccionado </span>
-                    </div>
-
-                    <div class="server-layout">
-                        <!-- FORM -->
-                        <div class="server-form-card">
-                            <div class="form-group">
-                                <label> NOMBRE DEL SERVIDOR * </label>
-
-                                <input type="text" value="Producción SQL" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> HOST * </label>
-
-                                <input type="text" value="localhost" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> NAME_BD * </label>
-
-                                <input type="text" value="aurea_finanzas" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> USER_BD * </label>
-
-                                <input type="text" value="sa" />
-                            </div>
-
-                            <div class="form-group">
-                                <label> PASS_BD * </label>
-
-                                <div class="password-box">
-                                    <input type="password" id="updatePassword" value="123456" />
-
-                                    <i class="fa-regular fa-eye" onclick="togglePassword('updatePassword', this)"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="server-status">
-                            <h3>Estado de Conexión</h3>
-
-                            <div class="status-circle">
-                                <i class="fa-solid fa-minus"></i>
-                            </div>
-
-                            <span> Sin Probar </span>
-
-                            <p>Aún no se ha probado la conexión</p>
-                        </div>
-                    </div>
-
-                    <div class="actions-footer">
-                        <button class="btn-outline" onclick="testConnection()">Probar Conexión</button>
-
-                        <div class="right-buttons">
-                            <button class="btn-danger" onclick="deleteServer()">
-                                <i class="fa-solid fa-trash"></i>
-
-                                Eliminar Servidor
-                            </button>
-
-                            <button class="btn-outline-dark" onclick="window.location.href='configurar.html'">
-                                Cancelar
-                            </button>
-
-                            <button class="btn-primary" onclick="updateServer()">Actualizar Servidor</button>
-                        </div>
-                    </div>
-                </section>
-            </main>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div>
+            <img src="../assets/images/logo.png" class="sidebar-logo" />
+            <nav>
+                <a href="carga.html"><i class="fa-solid fa-cloud-arrow-up"></i><span>Carga</span></a>
+                <a href="carga-nueva.html"><i class="fa-solid fa-square-plus"></i><span>Carga Nueva</span></a>
+                <a class="active" href="configurar.html"><i class="fa-solid fa-server"></i><span>Configurar Servidor</span></a>
+            </nav>
         </div>
 
-        <script src="../assets/js/app.js"></script>
-    </body>
+        <button class="logout-btn" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Cerrar sesión</span>
+        </button>
+    </aside>
+
+    <main class="content">
+        <h1>Detalles del Servidor</h1>
+
+        <div class="server-tabs">
+            <a href="#agregar" class="tab-btn active" onclick="showSection('agregar', this)">Agregar Servidor</a>
+            <a href="#actualizar" class="tab-btn" onclick="showSection('actualizar', this)">Actualizar Servidor</a>
+        </div>
+
+        <section id="agregar" class="server-section active">
+            <div class="server-layout">
+                <div class="server-form-card">
+
+                    <div class="form-group">
+                        <label>NOMBRE DEL SERVIDOR *</label>
+                        <input type="text" id="addNombreServidor" placeholder="Ej. Neon Producción" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>TIPO BD *</label>
+                        <select id="addTipoBD">
+                            <option value="postgresql">PostgreSQL / Neon</option>
+                            <option value="sqlserver">SQL Server</option>
+                            <option value="mysql">MySQL</option>
+                            <option value="oracle">Oracle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>HOST *</label>
+                        <input type="text" id="addHost" placeholder="Ej. ep-xxxx.us-east-1.aws.neon.tech" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>PUERTO *</label>
+                        <input type="number" id="addPuerto" value="5432" placeholder="5432" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>NAME_BD *</label>
+                        <input type="text" id="addNameBD" placeholder="Ej. neondb" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>USER_BD *</label>
+                        <input type="text" id="addUserBD" placeholder="Ej. neondb_owner" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>PASS_BD *</label>
+                        <div class="password-box">
+                            <input type="password" id="addPassword" placeholder="Ingrese contraseña" />
+                            <i class="fa-regular fa-eye" onclick="togglePassword('addPassword', this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SSL MODE *</label>
+                        <select id="addSslMode">
+                            <option value="require">require</option>
+                            <option value="disable">disable</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="server-status">
+                    <h3>Estado de Conexión</h3>
+                    <div class="status-circle"><i class="fa-solid fa-minus"></i></div>
+                    <span>Sin Probar</span>
+                    <p>Aún no se ha probado la conexión</p>
+                </div>
+            </div>
+
+            <div class="actions-footer">
+                <button class="btn-outline" onclick="testConnection()">Probar Conexión</button>
+
+                <div class="right-buttons">
+                    <button class="btn-outline-dark" onclick="window.location.href='configurar.html'">Cancelar</button>
+                    <button class="btn-primary" onclick="saveServer()">Guardar Servidor</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
 </html>

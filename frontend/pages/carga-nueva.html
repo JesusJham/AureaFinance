@@ -1,244 +1,250 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>Aurea Finance Group</title>
-
-        <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    </head>
-
-    <body>
-        <div class="container">
-            <aside class="sidebar">
-                <div>
-                    <img src="../assets/images/logo.png" class="sidebar-logo" />
-
-                    <nav>
-                        <a href="carga.html">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-
-                            <span> Carga </span>
-                        </a>
-
-                        <a class="active" href="carga-nueva.html">
-                            <i class="fa-solid fa-square-plus"></i>
-
-                            <span> Carga Nueva </span>
-                        </a>
-
-                        <a href="configurar.html">
-                            <i class="fa-solid fa-server"></i>
-
-                            <span> Configurar Servidor </span>
-                        </a>
-                    </nav>
-                </div>
-
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-
-                    <span> Cerrar sesión </span>
-                </button>
-            </aside>
-
-            <main class="content">
-                <h1>Carga Nueva</h1>
-
-                <p>Define los campos y tipos de datos para la nueva carga</p>
-
-                <div class="top-card">
-                    <div class="top-actions">
-                        <button class="btn-outline">
-                            <i class="fa-solid fa-plus"></i>
-
-                            Agregar Carga Nueva
-                        </button>
-
-                        <button class="btn-primary">
-                            <i class="fa-solid fa-pen"></i>
-
-                            Actualizar Carga
-                        </button>
-
-                        <button class="btn-danger">
-                            <i class="fa-solid fa-trash"></i>
-
-                            Eliminar Carga
-                        </button>
-                    </div>
-
-                    <div class="grid-form">
-                        <div>
-                            <label> SERVIDOR </label>
-
-                            <select>
-                                <option>Seleccione servidor</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label> NOMBRE BD </label>
-
-                            <select>
-                                <option>Seleccione BD</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label> ESQUEMA </label>
-
-                            <select>
-                                <option>Seleccione esquema</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label> NOMBRE TABLA </label>
-
-                            <select>
-                                <option>Seleccione tabla</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label> TIPO CARGA </label>
-
-                            <select>
-                                <option>Seleccione carga</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label> TIPO SEPARADOR </label>
-
-                            <select>
-                                <option>Seleccione separador</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="preview-grid">
-                    <div class="upload-card">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-
-                        <h3>Arrastra y suelta el archivo aquí</h3>
-
-                        <button class="btn-primary" onclick="selectFile()">Seleccionar Archivo</button>
-
-                        <input type="file" id="fileInput" hidden onchange="handleFile(event)" />
-
-                        <p>Formatos permitidos: CSV, XLSX TXT</p>
-                    </div>
-
-                    <div class="preview-card">
-                        <h3>Vista previa del archivo</h3>
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Columna 1</th>
-
-                                    <th>Columna 2</th>
-
-                                    <th>Columna 3</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>-</td>
-
-                                    <td>-</td>
-
-                                    <td>-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="config-card">
-                        <h3>Configuración del Archivo</h3>
-
-                        <label> Codificación </label>
-
-                        <select>
-                            <option>UTF-8</option>
-                        </select>
-
-                        <label> Carácter de Texto </label>
-
-                        <select>
-                            <option>Carácter</option>
-                        </select>
-
-                        <label> Escape de Texto </label>
-
-                        <input type="text" placeholder="Ingrese valor" />
-                    </div>
-                </div>
-
-                <div class="mapping-card">
-                    <h3>Asignación de Columnas</h3>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Columna Archivo</th>
-
-                                <th>Tipo de Dato</th>
-
-                                <th>Campo de la Tabla</th>
-
-                                <th>Tipo de Dato Destino</th>
-
-                                <th>Nulos</th>
-
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>-</td>
-
-                                <td>-</td>
-
-                                <td>-</td>
-
-                                <td>-</td>
-
-                                <td>-</td>
-
-                                <td>
-                                    <button class="delete-btn">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="actions-footer">
-                    <button class="btn-outline-dark" onclick="window.location.href='carga.html'">Cancelar</button>
-
-                    <div class="right-buttons">
-                        <button class="btn-outline">Test de Carga</button>
-
-                        <button class="btn-primary">Guardar Carga</button>
-
-                        <button class="btn-success">Ejecutar Carga</button>
-                    </div>
-                </div>
-            </main>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurea Finance Group</title>
+
+    <link rel="stylesheet" href="../assets/css/style-dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div>
+            <img src="../assets/images/logo.png" class="sidebar-logo" />
+
+            <nav>
+                <a href="carga.html">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Carga</span>
+                </a>
+
+                <a class="active" href="carga-nueva.html">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <span>Carga Nueva</span>
+                </a>
+
+                <a href="configurar.html">
+                    <i class="fa-solid fa-server"></i>
+                    <span>Configurar Servidor</span>
+                </a>
+            </nav>
         </div>
 
-        <script src="../assets/js/app.js"></script>
-    </body>
+        <button class="logout-btn" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Cerrar sesión</span>
+        </button>
+    </aside>
+
+    <main class="content">
+        <h1>Carga Nueva</h1>
+        <p>Configura el Data Entry, carga el archivo y define las columnas RAW/SILVER.</p>
+
+        <div class="top-card">
+            <div class="top-actions">
+                <button class="btn-outline" onclick="limpiarCargaNueva()">
+                    <i class="fa-solid fa-plus"></i>
+                    Nueva Configuración
+                </button>
+
+                <button class="btn-primary" onclick="guardarDataEntry()">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Guardar Carga
+                </button>
+            </div>
+
+            <div class="grid-form">
+                <div>
+                    <label>SERVIDOR</label>
+                    <select id="selectServidor" onchange="onServidorChange()">
+                        <option value="">Seleccione servidor</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>NOMBRE BD</label>
+                    <select id="selectBaseDatos">
+                        <option value="">Seleccione BD</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>ESQUEMA RAW</label>
+                    <select id="selectEsquemaRaw">
+                        <option value="">Seleccione esquema RAW</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>ESQUEMA SILVER</label>
+                    <select id="selectEsquemaSilver">
+                        <option value="">Seleccione esquema SILVER</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>TABLA RAW</label>
+                    <input type="text" id="tablaRaw" placeholder="raw_clientes" />
+                </div>
+
+                <div>
+                    <label>TABLA SILVER</label>
+                    <input type="text" id="tablaSilver" placeholder="silver_clientes" />
+                </div>
+
+                <div>
+                    <label>TIPO DE ARCHIVO</label>
+                    <select id="tipoArchivo" onchange="onTipoArchivoChange()">
+                        <option value="">Seleccione archivo</option>
+                        <option value="CSV">CSV</option>
+                        <option value="XLSX">XLSX</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>TIPO CARGA</label>
+                    <select id="tipoCarga" onchange="onTipoCargaChange()">
+                        <option value="">Seleccione carga</option>
+                        <option value="FULL">Carga Completa</option>
+                        <option value="INCREMENTAL_PERIOD">Incremental por Período</option>
+                        <option value="INCREMENTAL_DATE">Incremental por Fecha</option>
+                    </select>
+                </div>
+
+                <div id="bloqueFiltroCarga">
+                    <label>COLUMNA DE ELIMINACIÓN / FILTRO</label>
+                    <input type="text" id="columnaFiltro" placeholder="Ej. periodo / fecha_proceso" />
+                </div>
+
+                <div>
+                    <label>SEPARADOR CSV</label>
+                    <select id="separadorArchivo">
+                        <option value="">Seleccione separador</option>
+                        <option value=",">Coma ,</option>
+                        <option value=";">Punto y coma ;</option>
+                        <option value="|">Pipe |</option>
+                        <option value="\t">Tabulación</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-grid">
+            <div class="upload-card" id="dropZone">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                <h3>Arrastra y suelta el archivo aquí</h3>
+
+                <button class="btn-primary" onclick="selectFile()">
+                    Seleccionar Archivo
+                </button>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    hidden
+                    accept=".csv,.xlsx"
+                    onchange="handleFile(event)"
+                />
+
+                <p id="fileNameText">Formatos permitidos: CSV, XLSX</p>
+            </div>
+
+            <div class="preview-card">
+                <h3>Vista previa del archivo</h3>
+
+                <table id="previewTable">
+                    <thead>
+                        <tr>
+                            <th>Sin archivo</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="config-card">
+                <h3>Configuración del Archivo</h3>
+
+                <label>Codificación</label>
+                <select id="encodingArchivo">
+                    <option value="UTF-8">UTF-8</option>
+                    <option value="LATIN1">LATIN1</option>
+                    <option value="ISO-8859-1">ISO-8859-1</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mapping-card">
+            <div class="mapping-header">
+                <div>
+                    <h3>Asignación de Columnas</h3>
+                    <p>Define columnas origen, destino y tipos para RAW/SILVER.</p>
+                </div>
+
+                <button class="btn-outline" onclick="agregarColumnaManual()">
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar Columna
+                </button>
+            </div>
+
+            <div class="mapping-table-wrapper">
+                <table id="mappingTable" class="mapping-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Columna Archivo</th>
+                            <th>Columna Limpia / Destino</th>
+                            <th>Tipo RAW</th>
+                            <th>Tipo SILVER</th>
+                            <th>Nulos</th>
+                            <th>PK</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="mappingBody">
+                        <tr>
+                            <td colspan="8" class="empty-row">
+                                Carga un archivo para generar el mapeo de columnas.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="actions-footer">
+            <button class="btn-outline-dark" onclick="window.location.href='carga.html'">
+                Cancelar
+            </button>
+
+            <div class="right-buttons">
+                <button class="btn-outline" onclick="testCarga()">
+                    Test de Carga
+                </button>
+
+                <button class="btn-primary" onclick="guardarDataEntry()">
+                    Guardar Carga
+                </button>
+
+                <button class="btn-success" onclick="ejecutarCarga()">
+                    Ejecutar Carga
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
 </html>
