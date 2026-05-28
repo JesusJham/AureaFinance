@@ -760,7 +760,7 @@ async function guardarDataEntry() {
 
     if (res.ok) {
         currentDataEntryId = result.id;
-        alert("✅ Configuración guardada correctamente");
+        alert("✅ Configuración guardada/actualizada correctamente");
         return result.id;
     } else {
         alert("❌ " + JSON.stringify(result.detail));
@@ -978,7 +978,12 @@ async function ejecutarCargaRegistrada() {
             "\nRegistros: " + result.registros
         );
     } else {
-        alert("❌ " + result.detail);
+        console.error(result);
+
+        alert(
+            "❌ ERROR:\n\n" +
+            JSON.stringify(result, null, 2)
+        );
     }
 }
 

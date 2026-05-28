@@ -6,10 +6,28 @@ from app.core.config import settings
 
 engine = create_engine(
     settings.DATABASE_URL,
-    connect_args={"check_same_thread": False} if "sqlite" in settings.DATABASE_URL else {},
+
+    # Solo para SQLite
+    connect_args={
+        "check_same_thread": False
+    } if "sqlite" in settings.DATABASE_URL else {},
+
+    # Evita conexiones muertas
+    pool_pre_ping=True,
+
+    # Recicla conexiones viejas
+    pool_recycle=300,
+
+    # Opcional pero recomendado
+    pool_size=10,
+    max_overflow=20,
 )
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
 
 Base = declarative_base()
 

@@ -11,7 +11,8 @@ from app.services.data_entry_service import (
     test_data_entry_config,
     guardar_data_entry,
     ejecutar_data_entry,
-    cargar_archivo_existente
+    cargar_archivo_existente,
+    validar_archivo_existente
 )
 
 
@@ -104,6 +105,33 @@ async def cargar_archivo_data_entry(
 ):
     try:
         resultado = await cargar_archivo_existente(
+            db=db,
+            data_entry_id=data_entry_id,
+            archivo=archivo,
+            usuario_id=current_user.id
+        )
+
+        return resultado
+
+    except Exception as e:
+        import traceback
+        print(traceback.format_exc())
+
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+    
+
+@router.post("/{data_entry_id}/validate-file")
+async def validar_archivo_data_entry(
+    data_entry_id: int,
+    archivo: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    current_user: Usuario = Depends(get_current_user)
+):
+    try:
+        resultado = await validar_archivo_existente(
             db=db,
             data_entry_id=data_entry_id,
             archivo=archivo,

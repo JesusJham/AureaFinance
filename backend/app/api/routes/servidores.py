@@ -16,16 +16,19 @@ from app.core.deps import get_current_user
 from app.models.models import Usuario
 from app.services.servidor_service import get_database_schemas
 
+
 router = APIRouter()
 
 
 @router.get("/", response_model=List[ServidorOut])
-def listar_servidores(db: Session = Depends(get_db)):
-    return (
-        db.query(Servidor)
-        .filter(Servidor.activo == True)
-        .all()
-    )
+def listar_servidores(
+    db: Session = Depends(get_db),
+    current_user: Usuario = Depends(get_current_user)
+):
+    return db.query(Servidor).filter(
+        Servidor.activo == True,
+        Servidor.usuario_id == current_user.id
+    ).all()
 
 
 @router.post("/", response_model=ServidorOut, status_code=201)
