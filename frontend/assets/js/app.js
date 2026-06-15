@@ -1,4 +1,4 @@
-const API = "http://localhost:8000/api";
+const API = window.API_BASE_URL || "http://localhost:8000/api";
 let selectedFile = null;
 let currentDataEntryId = null;
 let selectedFileCarga = null;

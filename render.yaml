@@ -1,0 +1,30 @@
+services:
+  # Backend FastAPI
+  - type: web
+    name: aurea-finance-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: DEBUG
+        value: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 60
+      - key: ALLOWED_ORIGINS
+        value: '["https://tu-frontend-vercel.vercel.app"]'
+      - key: DATABASE_URL
+        sync: false  # Se configura en el dashboard de Render
+
+  # Frontend estático (opcional, si lo quieres en Render también)
+  # - type: static_site
+  #   name: aurea-finance-frontend
+  #   rootDir: frontend
+  #   buildCommand: echo "static site"
+  #   staticPublishPath: .

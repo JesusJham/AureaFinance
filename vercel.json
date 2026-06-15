@@ -1,0 +1,24 @@
+{
+  "buildCommand": "echo 'Frontend estático - no requiere build'",
+  "outputDirectory": ".",
+  "public": true,
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/frontend/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ],
+  "env": {
+    "API_BASE_URL": "@api_base_url"
+  },
+  "buildIgnore": [
+    "backend/**",
+    ".git/**",
+    "node_modules/**",
+    ".env",
+    "*.md"
+  ]
+}
+

@@ -1,0 +1,30 @@
+# ============================================
+# RENDER ENVIRONMENT VARIABLES - COPY & PASTE
+# ============================================
+#
+# En tu dashboard de Render:
+# Settings → Environment Variables
+# Copia y pega estas variables (actualiza los valores)
+#
+
+# Información de la aplicación
+DEBUG=false
+SECRET_KEY=super-secret-key-change-this-to-something-long-and-random-at-least-32-characters
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+# URLs permitidas en CORS (tu frontend de Vercel)
+ALLOWED_ORIGINS=["https://tu-proyecto-vercel.vercel.app"]
+
+# Base de datos Neon
+# Obtén esto de: https://console.neon.tech → Project → Connection string
+# Debe ser algo como:
+# postgresql://user:password@ep-xxx.region.aws.neon.tech/database?sslmode=require
+DATABASE_URL=postgresql://user:password@ep-xxx.region.aws.neon.tech/database?sslmode=require
+
+# Puerto (Render asigna automáticamente, pero lo dejamos para flexibilidad)
+PORT=8000
+HOST=0.0.0.0
+
+# Python version
+PYTHON_VERSION=3.11

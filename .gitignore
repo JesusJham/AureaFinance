@@ -3,10 +3,13 @@ __pycache__/
 *.py[cod]
 *.pyo
 .env
+.env.local
+.env.production
 *.db
 *.sqlite3
 venv/
 .venv/
+backend/venv/
 dist/
 build/
 *.egg-info/
@@ -18,6 +21,23 @@ node_modules/
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # Uploads temporales
 backend/uploads/
+
+# Vercel
+.vercel/
+
+# Render
+.render/
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+logs/
+

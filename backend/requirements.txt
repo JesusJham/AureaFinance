@@ -29,6 +29,7 @@ orjson==3.11.9
 pandas==2.2.2
 passlib==1.7.4
 psycopg2==2.9.12
+psycopg2-binary==2.9.12
 pyasn1==0.6.3
 pycparser==3.0
 pydantic==2.7.1
