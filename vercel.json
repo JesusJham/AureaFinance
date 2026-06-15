@@ -2,7 +2,7 @@
   "buildCommand": "echo 'Frontend estático - no requiere build'",
   "outputDirectory": ".",
   "env": {
-    "API_BASE_URL": "@api_base_url"
+    "API_BASE_URL": "team_2RWbZvAakyUcNzIT7W6oOhq6"
   }
 }
 
