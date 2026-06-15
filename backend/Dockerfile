@@ -16,7 +16,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el código de la aplicación
-COPY backend/ .
+COPY . .
 
 # Exponer puerto (Render lo usa)
 EXPOSE 8000
