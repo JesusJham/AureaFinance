@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copiar archivo de dependencias
-COPY backend/requirements.txt .
+COPY requirements.txt .
 
 # Instalar dependencias Python
 RUN pip install --no-cache-dir -r requirements.txt
