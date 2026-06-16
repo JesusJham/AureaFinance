@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
     # CORS
-    ALLOWED_ORIGINS: List[str] = ["http://localhost:5500", "http://127.0.0.1:5500"]
+    ALLOWED_ORIGINS: List[str] = ["http://localhost:5500", "http://127.0.0.1:5500", "https://project-wk0hp.vercel.app"]
 
     # Base de datos interna (SQLite para dev, PostgreSQL para prod)
     DATABASE_URL: str = "sqlite:///./aurea.db"

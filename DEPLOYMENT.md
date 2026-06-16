@@ -84,7 +84,7 @@ DEBUG = false
 SECRET_KEY = (genera una clave segura de al menos 32 caracteres)
 ALGORITHM = HS256
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
-ALLOWED_ORIGINS = ["https://tu-frontend-vercel.vercel.app"]
+ALLOWED_ORIGINS = ["https://project-wk0hp.vercel.app"]
 DATABASE_URL = postgresql://usuario:password@host/basedatos?sslmode=require
 ```
 
