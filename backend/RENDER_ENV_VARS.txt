@@ -20,7 +20,7 @@ ALLOWED_ORIGINS=["https://tu-proyecto-vercel.vercel.app"]
 # Obtén esto de: https://console.neon.tech → Project → Connection string
 # Debe ser algo como:
 # postgresql://user:password@ep-xxx.region.aws.neon.tech/database?sslmode=require
-DATABASE_URL=postgresql://user:password@ep-xxx.region.aws.neon.tech/database?sslmode=require
+DATABASE_URL=postgresql://neondb_owner:npg_XXXXX@ep-bold-mode-XXXXX.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
 
 # Puerto (Render asigna automáticamente, pero lo dejamos para flexibilidad)
 PORT=8000
