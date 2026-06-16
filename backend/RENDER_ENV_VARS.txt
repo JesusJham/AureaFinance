@@ -14,7 +14,7 @@ ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 
 # URLs permitidas en CORS (tu frontend de Vercel)
-ALLOWED_ORIGINS=["http://localhost:5500","https://tu-dominio.com","https://project-wk0hp.vercel.app"]
+ALLOWED_ORIGINS=["https://project-wk0hp.vercel.app"]
 
 
 # Base de datos Neon
