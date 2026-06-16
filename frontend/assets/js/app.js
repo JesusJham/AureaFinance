@@ -28,7 +28,7 @@ async function login(event) {
         if (res.ok) {
             localStorage.setItem("token", data.access_token);
             localStorage.setItem("usuario", JSON.stringify(data.usuario));
-            window.location.href = "Carga.html";
+            window.location.href = "/frontend/pages/carga.html";
         } else {
             alert("❌ " + data.detail);
         }
@@ -62,7 +62,7 @@ async function register(event) {
 
         if (res.ok) {
             alert("✅ Cuenta creada correctamente");
-            window.location.href = "login.html";
+            window.location.href = "/frontend/pages/login.html";
         } else {
             alert("❌ " + data.detail);
         }
@@ -76,7 +76,7 @@ async function register(event) {
 function logout() {
     localStorage.removeItem("token");
 
-    window.location.href = "Login.html";
+    window.location.href = "/frontend/pages/login.html";
 }
 
 
@@ -206,7 +206,7 @@ async function saveServer() {
 
         alert("Servidor guardado en Neon");
 
-        window.location.href = "Configurar.html";
+        window.location.href  = "/frontend/pages/configurar.html";
 
     } catch (error) {
         console.error(error);
@@ -219,7 +219,7 @@ async function saveServer() {
 function updateServer() {
     alert("Servidor actualizado correctamente");
 
-    window.location.href = "Configurar.html";
+    window.location.href  = "/frontend/pages/configurar.html";
 }
 
 
@@ -230,7 +230,7 @@ function deleteServer() {
     if (confirmDelete) {
         alert("Servidor eliminado");
 
-        window.location.href = "Configurar.html";
+        window.location.href  = "/frontend/pages/configurar.html";
     }
 }
 
@@ -803,7 +803,7 @@ async function ejecutarCarga() {
             "\nRegistros cargados: " + result.registros
         );
 
-        window.location.href = "carga.html";
+        window.location.href = "/frontend/pages/carga.html";
     } else {
         alert("❌ " + JSON.stringify(result.detail));
     }
