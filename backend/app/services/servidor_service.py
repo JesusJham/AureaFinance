@@ -1,6 +1,6 @@
 from typing import Tuple
 import psycopg2
-import pyodbc
+#import pyodbc
 
 def test_database_connection(servidor) -> Tuple[bool, str]:
     """
